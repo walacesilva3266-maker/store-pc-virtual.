@@ -8,88 +8,184 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
- margin:0;background:#080e1c;color:white;
+ margin:0;
+ background:#080e1c;
+ color:white;
  font-family:Arial,sans-serif
 }
+
 header{
  background:linear-gradient(110deg,#0878ed,#e32636);
- padding:30px 15px;text-align:center
+ padding:30px 15px;
+ text-align:center
 }
+
 header h1{font-size:29px;margin:0}
+
 nav{
- background:#111d32;padding:16px 8px;
- display:flex;justify-content:center;gap:22px;
- flex-wrap:wrap;position:sticky;top:0;z-index:10
+ background:#111d32;
+ padding:16px 8px;
+ display:flex;
+ justify-content:center;
+ gap:22px;
+ flex-wrap:wrap;
+ position:sticky;
+ top:0;
+ z-index:10
 }
-nav a{color:white;text-decoration:none;font-weight:bold}
-.container{max-width:1100px;margin:auto;padding:18px}
+
+nav a{
+ color:white;
+ text-decoration:none;
+ font-weight:bold
+}
+
+.container{
+ max-width:1100px;
+ margin:auto;
+ padding:18px
+}
+
 h2{color:#55a4ff}
+
 .featured{
  background:linear-gradient(135deg,#142b50,#271b38);
- border:2px solid #0878ed;border-radius:16px;
- padding:20px;margin:15px 0 35px
+ border:2px solid #0878ed;
+ border-radius:16px;
+ padding:20px;
+ margin:15px 0 35px
 }
+
 .featured img{
- width:100%;max-height:280px;object-fit:cover;
- border-radius:12px;margin-top:15px
+ width:100%;
+ max-height:280px;
+ object-fit:cover;
+ border-radius:12px;
+ margin-top:15px
 }
-.featured h2{color:white;font-size:28px}
+
+.featured h2{
+ color:white;
+ font-size:28px
+}
+
 .tag{
- display:inline-block;background:#e32636;
- padding:8px 12px;border-radius:20px;
- font-size:12px;font-weight:bold
+ display:inline-block;
+ background:#e32636;
+ padding:8px 12px;
+ border-radius:20px;
+ font-size:12px;
+ font-weight:bold
 }
+
 .price{
- color:#42e69a;font-size:23px;font-weight:bold
+ color:#42e69a;
+ font-size:23px;
+ font-weight:bold
 }
+
 .games{
- display:grid;grid-template-columns:
- repeat(auto-fit,minmax(220px,1fr));gap:20px
+ display:grid;
+ grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+ gap:20px
 }
+
 .game{
- background:#14213a;border:1px solid #293e60;
- border-radius:13px;overflow:hidden
+ background:#14213a;
+ border:1px solid #293e60;
+ border-radius:13px;
+ overflow:hidden
 }
-.game img{width:100%;height:155px;object-fit:cover}
+
+.game img{
+ width:100%;
+ height:155px;
+ object-fit:cover
+}
+
 .game-content{padding:15px}
+
 .game h3{min-height:35px}
+
 button{
- width:100%;border:none;padding:14px;
- border-radius:8px;color:white;background:#0878ed;
- font-size:15px;font-weight:bold;cursor:pointer;margin-top:8px
+ width:100%;
+ border:none;
+ padding:14px;
+ border-radius:8px;
+ color:white;
+ background:#0878ed;
+ font-size:15px;
+ font-weight:bold;
+ cursor:pointer;
+ margin-top:8px
 }
+
 button:hover{background:#e32636}
+
 .red{background:#e32636}
 .green{background:#16876d}
+
 .panel{
- background:#14213a;padding:20px;border-radius:14px;
- margin-top:30px;border:1px solid #293e60
+ background:#14213a;
+ padding:20px;
+ border-radius:14px;
+ margin-top:30px;
+ border:1px solid #293e60
 }
-.cart-item{padding:12px 0;border-bottom:1px solid #34435b}
+
+.cart-item{
+ padding:12px 0;
+ border-bottom:1px solid #34435b
+}
+
 .cart-item button{
- width:auto;padding:8px 14px;background:#e32636;margin-left:8px
+ width:auto;
+ padding:8px 14px;
+ background:#e32636;
+ margin-left:8px
 }
+
 .total{
- display:flex;justify-content:space-between;
- font-size:21px;font-weight:bold;margin-top:20px
+ display:flex;
+ justify-content:space-between;
+ font-size:21px;
+ font-weight:bold;
+ margin-top:20px
 }
+
 .pix{
- background:#063b31;border:1px solid #16876d;
- padding:20px;border-radius:12px;margin-top:15px
+ background:#063b31;
+ border:1px solid #16876d;
+ padding:20px;
+ border-radius:12px;
+ margin-top:15px
 }
-.pix-code{
- background:#082820;color:#9ce5ca;padding:18px;
- border-radius:8px;overflow-wrap:anywhere;margin:15px 0;
+
+.status{
+ color:#ffc857;
+ font-weight:bold
 }
-.status{color:#ffc857;font-weight:bold}
-footer{text-align:center;color:#9aabc3;padding:30px}
+
+footer{
+ text-align:center;
+ color:#9aabc3;
+ padding:30px
+}
+
 small{color:#aebbd0}
+
 .email-key{
- background:#082820;color:#9ce5ca;padding:15px;
- border-radius:8px;overflow-wrap:anywhere;
- margin:15px 0;font-size:16px
+ background:#082820;
+ color:#9ce5ca;
+ padding:15px;
+ border-radius:8px;
+ overflow-wrap:anywhere;
+ margin:15px 0;
+ font-size:16px
 }
+
 @media(max-width:480px){
  .container{padding:14px}
  nav{gap:18px}
@@ -114,14 +210,19 @@ small{color:#aebbd0}
 <main class="container">
 
 <section id="inicio" class="featured">
+
 <span class="tag">PRODUTO PRINCIPAL</span>
+
 <h2>🖥️ PC VIRTUAL</h2>
 
 <img
 src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=1000"
 alt="Computador gamer">
 
-<p>Jogue seus jogos de PC pelo celular através de um serviço de computador virtual.</p>
+<p>
+Jogue seus jogos de PC pelo celular através
+de um serviço de computador virtual.
+</p>
 
 <p class="price">R$ 19,90</p>
 
@@ -129,26 +230,42 @@ alt="Computador gamer">
 COMPRAR PC VIRTUAL
 </button>
 
-<small>O acesso depende da contratação e disponibilidade de um serviço compatível.</small>
+<small>
+O acesso depende da contratação e disponibilidade
+de um serviço compatível.
+</small>
+
 </section>
 
 <h2 id="catalogo">🎮 CATÁLOGO DE JOGOS</h2>
+
 <div class="games" id="games"></div>
 
 <section class="panel" id="carrinho">
+
 <h2>🛒 MEU CARRINHO</h2>
-<div id="cartItems">Seu carrinho está vazio.</div>
+
+<div id="cartItems">
+Seu carrinho está vazio.
+</div>
 
 <div class="total">
 <span>Total:</span>
 <span id="total">R$ 0,00</span>
 </div>
 
-<button onclick="checkout()">CONTINUAR</button>
-<button class="red" onclick="clearCart()">LIMPAR CARRINHO</button>
+<button onclick="checkout()">
+CONTINUAR
+</button>
+
+<button class="red" onclick="clearCart()">
+LIMPAR CARRINHO
+</button>
+
 </section>
 
 <section class="panel" id="pagamento">
+
 <h2>💜 PAGAMENTO PIX NUBANK</h2>
 
 <div class="pix">
@@ -156,14 +273,16 @@ COMPRAR PC VIRTUAL
 <h3>Pagamento por Pix</h3>
 
 <p>Valor da compra:</p>
+
 <h2 id="pixTotal">R$ 0,00</h2>
 
 <p>Banco: <strong>Nubank</strong></p>
-<p>Tipo de pagamento: PIX manual</p>
+
+<p>Tipo: PIX manual</p>
 
 <p>Sua chave PIX:</p>
 
-<div class="email-key" id="pixKey">
+<div class="email-key">
 walacesilva3266@gmail.com
 </div>
 
@@ -180,10 +299,10 @@ Aguardando pagamento.
 </p>
 
 <small>
-1. Copie a chave PIX ou abra o link de cobrança.
-2. Confira o destinatário e o valor no aplicativo do banco.
+1. Copie sua chave PIX ou abra a cobrança Nubank.
+2. Confira o destinatário e o valor no banco.
 3. Faça o pagamento somente se os dados estiverem corretos.
-4. A loja ainda não confirma pagamentos automaticamente.
+4. A confirmação ainda precisa ser verificada manualmente.
 </small>
 
 </div>
@@ -204,61 +323,79 @@ const NUBANK_LINK =
 "https://nubank.com.br/cobrar/4exwc9/6ae960a4-bf3e-4daf-b455-ffba378556df";
 
 const games = [
+
 {
 name:"GTA V",
 price:8.90,
 image:"https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg"
 },
+
 {
 name:"God of War",
 price:8.90,
 image:"https://cdn.cloudflare.steamstatic.com/steam/apps/1593500/header.jpg"
 },
+
 {
 name:"Forza Horizon 5",
 price:8.90,
 image:"https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg"
 },
+
 {
 name:"EA SPORTS FC 26",
 price:8.90,
 image:"https://cdn.cloudflare.steamstatic.com/steam/apps/3405690/header.jpg"
 },
+
 {
 name:"Red Dead Redemption 2",
 price:8.90,
 image:"https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg"
 },
+
 {
 name:"Resident Evil 4",
 price:8.90,
 image:"https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg"
 }
+
 ];
 
 let cart = [];
 
 function money(value){
+
 return value.toLocaleString("pt-BR",{
 style:"currency",
 currency:"BRL"
 });
+
 }
 
 function renderGames(){
 
 document.getElementById("games").innerHTML =
+
 games.map((game,index)=>`
+
 <div class="game">
+
 <img src="${game.image}" alt="${game.name}">
+
 <div class="game-content">
+
 <h3>${game.name}</h3>
+
 <p class="price">${money(game.price)}</p>
+
 <button onclick="addProduct(${index},'game')">
 ADICIONAR AO CARRINHO
 </button>
+
 </div>
 </div>
+
 `).join("");
 
 }
@@ -268,9 +405,16 @@ function addProduct(product,type){
 let item;
 
 if(type==="game"){
+
 item=games[product];
+
 }else{
-item={name:product,price:19.90};
+
+item={
+name:product,
+price:19.90
+};
+
 }
 
 cart.push({
@@ -285,13 +429,17 @@ alert(item.name+" adicionado ao carrinho!");
 }
 
 function removeProduct(index){
+
 cart.splice(index,1);
+
 renderCart();
+
 }
 
 function clearCart(){
 
 cart=[];
+
 renderCart();
 
 document.getElementById("paymentStatus").textContent=
@@ -300,7 +448,9 @@ document.getElementById("paymentStatus").textContent=
 }
 
 function getTotal(){
+
 return cart.reduce((sum,item)=>sum+item.price,0);
+
 }
 
 function renderCart(){
@@ -308,28 +458,41 @@ function renderCart(){
 const element=document.getElementById("cartItems");
 
 if(cart.length===0){
+
 element.innerHTML="Seu carrinho está vazio.";
+
 }else{
 
 element.innerHTML=cart.map((product,index)=>`
+
 <div class="cart-item">
+
 ${product.name} — ${money(product.price)}
+
 <button onclick="removeProduct(${index})">X</button>
+
 </div>
+
 `).join("");
 
 }
 
-document.getElementById("total").textContent=money(getTotal());
-document.getElementById("pixTotal").textContent=money(getTotal());
+document.getElementById("total").textContent=
+money(getTotal());
+
+document.getElementById("pixTotal").textContent=
+money(getTotal());
 
 }
 
 function checkout(){
 
 if(cart.length===0){
+
 alert("Adicione um produto primeiro!");
+
 return;
+
 }
 
 document.getElementById("pagamento").scrollIntoView({
@@ -341,26 +504,73 @@ document.getElementById("paymentStatus").textContent=
 
 }
 
-async function copyPixKey(){
+// ALTERNATIVA PARA COPIAR PIX EM CELULARES
 
-try{
-await navigator.clipboard.writeText(PIX_KEY);
+function copyPixKey(){
+
+const chave = PIX_KEY;
+
+if(navigator.clipboard && window.isSecureContext){
+
+navigator.clipboard.writeText(chave)
+
+.then(()=>{
+
 alert("Chave PIX copiada com sucesso!");
-}catch(error){
 
-const input=document.createElement("textarea");
-input.value=PIX_KEY;
-document.body.appendChild(input);
-input.select();
+})
 
-try{
-document.execCommand("copy");
-alert("Chave PIX copiada!");
-}catch(e){
-alert("Não foi possível copiar. Selecione a chave manualmente.");
+.catch(()=>{
+
+mostrarChave();
+
+});
+
+}else{
+
+mostrarChave();
+
 }
 
-input.remove();
+}
+
+function mostrarChave(){
+
+const campo = document.createElement("textarea");
+
+campo.value = PIX_KEY;
+
+campo.style.position = "fixed";
+campo.style.left = "-9999px";
+
+document.body.appendChild(campo);
+
+campo.focus();
+campo.select();
+campo.setSelectionRange(0, campo.value.length);
+
+let copiou = false;
+
+try{
+
+copiou = document.execCommand("copy");
+
+}catch(error){
+
+copiou = false;
+
+}
+
+campo.remove();
+
+if(copiou){
+
+alert("Chave PIX copiada com sucesso!");
+
+}else{
+
+window.prompt("Copie sua chave PIX:",PIX_KEY);
+
 }
 
 }
@@ -368,14 +578,21 @@ input.remove();
 function openNubankCharge(){
 
 if(cart.length===0){
+
 alert("Adicione um produto ao carrinho primeiro!");
+
 return;
+
 }
 
-window.open(NUBANK_LINK,"_blank","noopener,noreferrer");
+window.open(
+NUBANK_LINK,
+"_blank",
+"noopener,noreferrer"
+);
 
 document.getElementById("paymentStatus").textContent=
-"Confira o valor e o destinatário na cobrança Nubank. O pagamento ainda precisa ser verificado manualmente.";
+"Confira o valor e o destinatário na cobrança Nubank. O pagamento precisa ser verificado manualmente.";
 
 }
 
