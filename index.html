@@ -126,6 +126,7 @@ button:hover{background:#e32636}
 
 .red{background:#e32636}
 .green{background:#16876d}
+.orange{background:#b87513}
 
 .panel{
  background:#14213a;
@@ -186,6 +187,26 @@ small{color:#aebbd0}
  font-size:16px
 }
 
+.admin{
+ background:#211b35;
+ border:2px solid #8c55e8;
+ padding:20px;
+ border-radius:14px;
+ margin-top:30px
+}
+
+.admin h2{color:#c49aff}
+
+.approved{
+ color:#42e69a;
+ font-weight:bold
+}
+
+.pending{
+ color:#ffc857;
+ font-weight:bold
+}
+
 @media(max-width:480px){
  .container{padding:14px}
  nav{gap:18px}
@@ -205,6 +226,7 @@ small{color:#aebbd0}
 <a href="#catalogo">Jogos</a>
 <a href="#carrinho">Carrinho</a>
 <a href="#pagamento">Pix</a>
+<a href="#admin">Administrador</a>
 </nav>
 
 <main class="container">
@@ -254,9 +276,7 @@ Seu carrinho está vazio.
 <span id="total">R$ 0,00</span>
 </div>
 
-<button onclick="checkout()">
-CONTINUAR
-</button>
+<button onclick="checkout()">CONTINUAR</button>
 
 <button class="red" onclick="clearCart()">
 LIMPAR CARRINHO
@@ -278,9 +298,7 @@ LIMPAR CARRINHO
 
 <p>Banco: <strong>Nubank</strong></p>
 
-<p>Tipo: PIX manual</p>
-
-<p>Sua chave PIX:</p>
+<p>Chave PIX:</p>
 
 <div class="email-key">
 walacesilva3266@gmail.com
@@ -299,13 +317,57 @@ Aguardando pagamento.
 </p>
 
 <small>
-1. Copie sua chave PIX ou abra a cobrança Nubank.
-2. Confira o destinatário e o valor no banco.
-3. Faça o pagamento somente se os dados estiverem corretos.
-4. A confirmação ainda precisa ser verificada manualmente.
+Confira o destinatário e o valor no aplicativo
+do banco antes de pagar.
+O pagamento precisa ser verificado manualmente.
 </small>
 
 </div>
+</section>
+
+<section class="admin" id="admin">
+
+<h2>🔐 ADMINISTRADOR — APROVAR PEDIDO</h2>
+
+<p>
+Área de controle administrativo da loja.
+</p>
+
+<p>Valor do pedido:</p>
+
+<h2 id="adminTotal">R$ 0,00</h2>
+
+<p id="adminStatus" class="pending">
+Status: aguardando verificação.
+</p>
+
+<p>
+Somente marque como aprovado depois de conferir
+o recebimento diretamente no Nubank.
+</p>
+
+<label>
+<input
+type="checkbox"
+id="paymentChecked"
+style="width:auto">
+Já conferi que o dinheiro entrou na conta Nubank.
+</label>
+
+<button class="green" onclick="approvePayment()">
+ADMINISTRADOR — APROVAR PEDIDO
+</button>
+
+<button class="orange" onclick="resetApproval()">
+VOLTAR PARA AGUARDANDO
+</button>
+
+<small>
+Este controle é apenas visual e local.
+Não verifica pagamentos bancários e não é protegido
+por autenticação de administrador.
+</small>
+
 </section>
 
 </main>
@@ -363,6 +425,7 @@ image:"https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg"
 ];
 
 let cart = [];
+let approved = false;
 
 function money(value){
 
@@ -405,22 +468,19 @@ function addProduct(product,type){
 let item;
 
 if(type==="game"){
-
 item=games[product];
-
 }else{
-
-item={
-name:product,
-price:19.90
-};
-
+item={name:product,price:19.90};
 }
 
 cart.push({
 name:item.name,
 price:item.price
 });
+
+approved=false;
+document.getElementById("paymentChecked").checked=false;
+updateApprovalStatus();
 
 renderCart();
 
@@ -432,6 +492,10 @@ function removeProduct(index){
 
 cart.splice(index,1);
 
+approved=false;
+document.getElementById("paymentChecked").checked=false;
+updateApprovalStatus();
+
 renderCart();
 
 }
@@ -440,7 +504,13 @@ function clearCart(){
 
 cart=[];
 
+approved=false;
+
+document.getElementById("paymentChecked").checked=false;
+
 renderCart();
+
+updateApprovalStatus();
 
 document.getElementById("paymentStatus").textContent=
 "Aguardando pagamento.";
@@ -483,6 +553,9 @@ money(getTotal());
 document.getElementById("pixTotal").textContent=
 money(getTotal());
 
+document.getElementById("adminTotal").textContent=
+money(getTotal());
+
 }
 
 function checkout(){
@@ -504,26 +577,18 @@ document.getElementById("paymentStatus").textContent=
 
 }
 
-// ALTERNATIVA PARA COPIAR PIX EM CELULARES
-
 function copyPixKey(){
-
-const chave = PIX_KEY;
 
 if(navigator.clipboard && window.isSecureContext){
 
-navigator.clipboard.writeText(chave)
+navigator.clipboard.writeText(PIX_KEY)
 
 .then(()=>{
-
 alert("Chave PIX copiada com sucesso!");
-
 })
 
 .catch(()=>{
-
 mostrarChave();
-
 });
 
 }else{
@@ -536,29 +601,24 @@ mostrarChave();
 
 function mostrarChave(){
 
-const campo = document.createElement("textarea");
+const campo=document.createElement("textarea");
 
-campo.value = PIX_KEY;
-
-campo.style.position = "fixed";
-campo.style.left = "-9999px";
+campo.value=PIX_KEY;
+campo.style.position="fixed";
+campo.style.left="-9999px";
 
 document.body.appendChild(campo);
 
 campo.focus();
 campo.select();
-campo.setSelectionRange(0, campo.value.length);
+campo.setSelectionRange(0,campo.value.length);
 
-let copiou = false;
+let copiou=false;
 
 try{
-
-copiou = document.execCommand("copy");
-
+copiou=document.execCommand("copy");
 }catch(error){
-
-copiou = false;
-
+copiou=false;
 }
 
 campo.remove();
@@ -596,8 +656,69 @@ document.getElementById("paymentStatus").textContent=
 
 }
 
+function updateApprovalStatus(){
+
+const status=document.getElementById("adminStatus");
+
+if(approved){
+
+status.textContent="Status: pedido marcado como aprovado localmente.";
+status.className="approved";
+
+}else{
+
+status.textContent="Status: aguardando verificação.";
+status.className="pending";
+
+}
+
+}
+
+function approvePayment(){
+
+if(cart.length===0){
+
+alert("Não existe pedido no carrinho!");
+
+return;
+
+}
+
+if(!document.getElementById("paymentChecked").checked){
+
+alert("Primeiro confira o recebimento diretamente no Nubank!");
+
+return;
+
+}
+
+approved=true;
+
+updateApprovalStatus();
+
+document.getElementById("paymentStatus").textContent=
+"Pedido marcado como aprovado pelo administrador. Confirmação local.";
+
+alert("Pedido marcado como aprovado!");
+
+}
+
+function resetApproval(){
+
+approved=false;
+
+document.getElementById("paymentChecked").checked=false;
+
+updateApprovalStatus();
+
+document.getElementById("paymentStatus").textContent=
+"Aguardando pagamento.";
+
+}
+
 renderGames();
 renderCart();
+updateApprovalStatus();
 
 </script>
 
