@@ -7,208 +7,92 @@
 <title>STORE PC VIRTUAL</title>
 
 <style>
-* {
-  box-sizing: border-box;
+*{box-sizing:border-box}
+body{
+ margin:0;background:#080e1c;color:white;
+ font-family:Arial,sans-serif
 }
-
-body {
-  margin: 0;
-  background: #080e1c;
-  color: white;
-  font-family: Arial, sans-serif;
+header{
+ background:linear-gradient(110deg,#0878ed,#e32636);
+ padding:30px 15px;text-align:center
 }
-
-header {
-  background: linear-gradient(110deg,#0878ed,#e32636);
-  padding: 30px 15px;
-  text-align: center;
+header h1{font-size:29px;margin:0}
+nav{
+ background:#111d32;padding:16px 8px;
+ display:flex;justify-content:center;gap:22px;
+ flex-wrap:wrap;position:sticky;top:0;z-index:10
 }
-
-header h1 {
-  font-size: 29px;
-  margin: 0;
+nav a{color:white;text-decoration:none;font-weight:bold}
+.container{max-width:1100px;margin:auto;padding:18px}
+h2{color:#55a4ff}
+.featured{
+ background:linear-gradient(135deg,#142b50,#271b38);
+ border:2px solid #0878ed;border-radius:16px;
+ padding:20px;margin:15px 0 35px
 }
-
-nav {
-  background: #111d32;
-  padding: 16px 8px;
-  display: flex;
-  justify-content: center;
-  gap: 22px;
-  flex-wrap: wrap;
-  position: sticky;
-  top: 0;
-  z-index: 10;
+.featured img{
+ width:100%;max-height:280px;object-fit:cover;
+ border-radius:12px;margin-top:15px
 }
-
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
+.featured h2{color:white;font-size:28px}
+.tag{
+ display:inline-block;background:#e32636;
+ padding:8px 12px;border-radius:20px;
+ font-size:12px;font-weight:bold
 }
-
-.container {
-  max-width: 1100px;
-  margin: auto;
-  padding: 18px;
+.price{
+ color:#42e69a;font-size:23px;font-weight:bold
 }
-
-h2 {
-  color: #55a4ff;
+.games{
+ display:grid;grid-template-columns:
+ repeat(auto-fit,minmax(220px,1fr));gap:20px
 }
-
-.featured {
-  background: linear-gradient(135deg,#142b50,#271b38);
-  border: 2px solid #0878ed;
-  border-radius: 16px;
-  padding: 20px;
-  margin: 15px 0 35px;
+.game{
+ background:#14213a;border:1px solid #293e60;
+ border-radius:13px;overflow:hidden
 }
-
-.featured img {
-  width: 100%;
-  max-height: 280px;
-  object-fit: cover;
-  border-radius: 12px;
-  margin-top: 15px;
+.game img{width:100%;height:155px;object-fit:cover}
+.game-content{padding:15px}
+.game h3{min-height:35px}
+button{
+ width:100%;border:none;padding:14px;
+ border-radius:8px;color:white;background:#0878ed;
+ font-size:15px;font-weight:bold;cursor:pointer;margin-top:8px
 }
-
-.featured h2 {
-  color: white;
-  font-size: 28px;
+button:hover{background:#e32636}
+.red{background:#e32636}
+.panel{
+ background:#14213a;padding:20px;border-radius:14px;
+ margin-top:30px;border:1px solid #293e60
 }
-
-.tag {
-  display: inline-block;
-  background: #e32636;
-  padding: 8px 12px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: bold;
+.cart-item{padding:12px 0;border-bottom:1px solid #34435b}
+.cart-item button{
+ width:auto;padding:8px 14px;background:#e32636;margin-left:8px
 }
-
-.price {
-  color: #42e69a;
-  font-size: 23px;
-  font-weight: bold;
+.total{
+ display:flex;justify-content:space-between;
+ font-size:21px;font-weight:bold;margin-top:20px
 }
-
-.games {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
-  gap: 20px;
+.pix{
+ background:#063b31;border:1px solid #16876d;
+ padding:20px;border-radius:12px;margin-top:15px
 }
-
-.game {
-  background: #14213a;
-  border: 1px solid #293e60;
-  border-radius: 13px;
-  overflow: hidden;
+.pix-code{
+ background:#082820;color:#9ce5ca;padding:18px;
+ border-radius:8px;overflow-wrap:anywhere;margin:15px 0;
+ min-height:55px
 }
-
-.game img {
-  width: 100%;
-  height: 155px;
-  object-fit: cover;
+.status{color:#ffc857;font-weight:bold}
+footer{text-align:center;color:#9aabc3;padding:30px}
+small{color:#aebbd0}
+input{
+ width:100%;padding:13px;border-radius:8px;
+ border:1px solid #52647c;background:#0c1729;
+ color:white;margin-top:8px
 }
-
-.game-content {
-  padding: 15px;
-}
-
-.game h3 {
-  min-height: 35px;
-}
-
-button {
-  width: 100%;
-  border: none;
-  padding: 14px;
-  border-radius: 8px;
-  color: white;
-  background: #0878ed;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 8px;
-}
-
-button:hover {
-  background: #e32636;
-}
-
-.red {
-  background: #e32636;
-}
-
-.panel {
-  background: #14213a;
-  padding: 20px;
-  border-radius: 14px;
-  margin-top: 30px;
-  border: 1px solid #293e60;
-}
-
-.cart-item {
-  padding: 12px 0;
-  border-bottom: 1px solid #34435b;
-}
-
-.cart-item button {
-  width: auto;
-  padding: 8px 14px;
-  background: #e32636;
-  margin-left: 8px;
-}
-
-.total {
-  display: flex;
-  justify-content: space-between;
-  font-size: 21px;
-  font-weight: bold;
-  margin-top: 20px;
-}
-
-.pix {
-  background: #063b31;
-  border: 1px solid #16876d;
-  padding: 20px;
-  border-radius: 12px;
-  margin-top: 15px;
-}
-
-.pix-code {
-  background: #082820;
-  color: #9ce5ca;
-  padding: 18px;
-  border-radius: 8px;
-  overflow-wrap: anywhere;
-  margin: 15px 0;
-}
-
-.status {
-  color: #ffc857;
-  font-weight: bold;
-}
-
-footer {
-  text-align: center;
-  color: #9aabc3;
-  padding: 30px;
-}
-
-small {
-  color: #aebbd0;
-}
-
-@media(max-width:480px) {
-  .container {
-    padding: 14px;
-  }
-
-  nav {
-    gap: 18px;
-  }
+@media(max-width:480px){
+ .container{padding:14px}
+ nav{gap:18px}
 }
 </style>
 </head>
@@ -216,361 +100,272 @@ small {
 <body>
 
 <header>
-  <h1>STORE PC VIRTUAL</h1>
-  <p>Seu mundo gamer começa aqui!</p>
+<h1>STORE PC VIRTUAL</h1>
+<p>Seu mundo gamer começa aqui!</p>
 </header>
 
 <nav>
-  <a href="#inicio">PC Virtual</a>
-  <a href="#catalogo">Jogos</a>
-  <a href="#carrinho">Carrinho</a>
-  <a href="#pagamento">Pix</a>
+<a href="#inicio">PC Virtual</a>
+<a href="#catalogo">Jogos</a>
+<a href="#carrinho">Carrinho</a>
+<a href="#pagamento">Pix</a>
 </nav>
 
 <main class="container">
 
-<!-- PC VIRTUAL PRINCIPAL -->
-
 <section id="inicio" class="featured">
+<span class="tag">PRODUTO PRINCIPAL</span>
+<h2>🖥️ PC VIRTUAL</h2>
 
-  <span class="tag">PRODUTO PRINCIPAL</span>
+<img
+src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=1000"
+alt="Computador gamer">
 
-  <h2>🖥️ PC VIRTUAL</h2>
+<p>Jogue seus jogos de PC pelo celular através de um serviço de computador virtual.</p>
 
-  <img
-    src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=1000"
-    alt="Computador gamer"
-  >
+<p class="price">R$ 19,90</p>
 
-  <p>
-    Jogue seus jogos de PC pelo celular
-    através de um serviço de computador virtual.
-  </p>
+<button onclick="addProduct('PC VIRTUAL',19.90)">
+COMPRAR PC VIRTUAL
+</button>
 
-  <p class="price">R$ 19,90</p>
-
-  <button onclick="addProduct('PC VIRTUAL',19.90)">
-    COMPRAR PC VIRTUAL
-  </button>
-
-  <small>
-    O acesso ao computador virtual depende da contratação
-    e disponibilidade de um serviço compatível.
-  </small>
-
+<small>O acesso depende da contratação e disponibilidade de um serviço compatível.</small>
 </section>
-
-<!-- JOGOS -->
 
 <h2 id="catalogo">🎮 CATÁLOGO DE JOGOS</h2>
-
 <div class="games" id="games"></div>
 
-<!-- CARRINHO -->
-
 <section class="panel" id="carrinho">
+<h2>🛒 MEU CARRINHO</h2>
+<div id="cartItems">Seu carrinho está vazio.</div>
 
-  <h2>🛒 MEU CARRINHO</h2>
+<div class="total">
+<span>Total:</span>
+<span id="total">R$ 0,00</span>
+</div>
 
-  <div id="cartItems">
-    Seu carrinho está vazio.
-  </div>
-
-  <div class="total">
-    <span>Total:</span>
-    <span id="total">R$ 0,00</span>
-  </div>
-
-  <button onclick="checkout()">
-    CONTINUAR
-  </button>
-
-  <button class="red" onclick="clearCart()">
-    LIMPAR CARRINHO
-  </button>
-
+<button onclick="checkout()">CONTINUAR</button>
+<button class="red" onclick="clearCart()">LIMPAR CARRINHO</button>
 </section>
 
-<!-- PAGAMENTO -->
-
 <section class="panel" id="pagamento">
+<h2>💜 PAGAMENTO PIX NUBANK</h2>
 
-  <h2>💠 PIX DEMONSTRATIVO</h2>
+<div class="pix">
 
-  <div class="pix">
+<h3>Pagamento por Pix</h3>
 
-    <h3>🧪 MODO DE TESTE</h3>
+<p>Valor da compra:</p>
+<h2 id="pixTotal">R$ 0,00</h2>
 
-    <p>
-      Esta tela é apenas uma demonstração.
-      O código abaixo não é uma chave Pix válida
-      e não deve ser usado para transferências.
-    </p>
+<p>O pagamento será realizado por meio de uma cobrança Pix válida.</p>
 
-    <h3>
-      Valor do teste:
-      <span id="pixTotal">R$ 0,00</span>
-    </h3>
+<div id="pixArea" hidden>
+<h3>QR Code / Código Pix</h3>
 
-    <div class="pix-code" id="pixCode">
-      DEMO-PIX-NAO-VALIDO-7821
-    </div>
+<div class="pix-code" id="pixCode"></div>
 
-    <button onclick="copyPix()">
-      COPIAR CÓDIGO DE TESTE
-    </button>
+<button onclick="copyPix()">COPIAR CÓDIGO PIX</button>
+</div>
 
-    <button class="red" onclick="simulatePayment()">
-      SIMULAR PAGAMENTO
-    </button>
+<p class="status" id="paymentStatus">
+Aguardando configuração segura do pagamento.
+</p>
 
-    <p class="status" id="paymentStatus">
-      Aguardando teste.
-    </p>
+<small>
+Esta loja ainda precisa de um servidor de pagamentos
+para gerar cobranças individuais e confirmar pagamentos.
+Nenhum pagamento será aprovado automaticamente nesta página.
+</small>
 
-    <small>
-      Nenhuma transferência real é realizada.
-      A simulação não confirma um pagamento verdadeiro.
-    </small>
-
-  </div>
-
+</div>
 </section>
 
 </main>
 
 <footer>
-  STORE PC VIRTUAL © 2026
-  <p>Loja demonstrativa</p>
+STORE PC VIRTUAL © 2026
+<p>Loja online</p>
 </footer>
 
 <script>
 
-// CATÁLOGO COM PREÇOS CORRETOS
+// CATÁLOGO - PREÇOS ORIGINAIS PRESERVADOS
 
 const games = [
-  {
-    name: "GTA V",
-    price: 8.90,
-    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg"
-  },
-  {
-    name: "God of War",
-    price: 8.90,
-    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1593500/header.jpg"
-  },
-  {
-    name: "Forza Horizon 5",
-    price: 8.90,
-    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg"
-  },
-  {
-    name: "EA SPORTS FC 26",
-    price: 8.90,
-    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/3405690/header.jpg"
-  },
-  {
-    name: "Red Dead Redemption 2",
-    price: 8.90,
-    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg"
-  },
-  {
-    name: "Resident Evil 4",
-    price: 8.90,
-    image: "https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg"
-  }
+{
+name:"GTA V",
+price:8.90,
+image:"https://cdn.cloudflare.steamstatic.com/steam/apps/271590/header.jpg"
+},
+{
+name:"God of War",
+price:8.90,
+image:"https://cdn.cloudflare.steamstatic.com/steam/apps/1593500/header.jpg"
+},
+{
+name:"Forza Horizon 5",
+price:8.90,
+image:"https://cdn.cloudflare.steamstatic.com/steam/apps/1551360/header.jpg"
+},
+{
+name:"EA SPORTS FC 26",
+price:8.90,
+image:"https://cdn.cloudflare.steamstatic.com/steam/apps/3405690/header.jpg"
+},
+{
+name:"Red Dead Redemption 2",
+price:8.90,
+image:"https://cdn.cloudflare.steamstatic.com/steam/apps/1174180/header.jpg"
+},
+{
+name:"Resident Evil 4",
+price:8.90,
+image:"https://cdn.cloudflare.steamstatic.com/steam/apps/2050650/header.jpg"
+}
 ];
-
-// CARRINHO
 
 let cart = [];
 
-function money(value) {
-  return value.toLocaleString("pt-BR", {
-    style: "currency",
-    currency: "BRL"
-  });
+function money(value){
+return value.toLocaleString("pt-BR",{
+style:"currency",
+currency:"BRL"
+});
 }
 
-// EXIBIR JOGOS
+function renderGames(){
 
-function renderGames() {
-
-  document.getElementById("games").innerHTML =
-    games.map((game,index) => `
-      <div class="game">
-
-        <img src="${game.image}" alt="${game.name}">
-
-        <div class="game-content">
-
-          <h3>${game.name}</h3>
-
-          <p class="price">${money(game.price)}</p>
-
-          <button onclick="addProduct(${index},'game')">
-            ADICIONAR AO CARRINHO
-          </button>
-
-        </div>
-      </div>
-    `).join("");
+document.getElementById("games").innerHTML =
+games.map((game,index)=>`
+<div class="game">
+<img src="${game.image}" alt="${game.name}">
+<div class="game-content">
+<h3>${game.name}</h3>
+<p class="price">${money(game.price)}</p>
+<button onclick="addProduct(${index},'game')">
+ADICIONAR AO CARRINHO
+</button>
+</div>
+</div>
+`).join("");
 
 }
 
-// ADICIONAR PRODUTOS
+function addProduct(product,type){
 
-function addProduct(product, type) {
+let item;
 
-  let item;
+if(type==="game"){
+item=games[product];
+}else{
+item={name:product,price:19.90};
+}
 
-  if(type === "game") {
-    item = games[product];
-  } else {
-    item = {
-      name: product,
-      price: 19.90
-    };
-  }
+cart.push({
+name:item.name,
+price:item.price
+});
 
-  cart.push({
-    name: item.name,
-    price: item.price
-  });
-
-  renderCart();
-
-  alert(item.name + " adicionado ao carrinho!");
+renderCart();
+alert(item.name+" adicionado ao carrinho!");
 
 }
 
-// REMOVER PRODUTO
+function removeProduct(index){
+cart.splice(index,1);
+renderCart();
+}
 
-function removeProduct(index) {
+function clearCart(){
 
-  cart.splice(index,1);
+cart=[];
+renderCart();
 
-  renderCart();
+document.getElementById("pixArea").hidden=true;
+
+document.getElementById("paymentStatus").textContent=
+"Aguardando configuração segura do pagamento.";
 
 }
 
-// LIMPAR CARRINHO
+function getTotal(){
+return cart.reduce((sum,item)=>sum+item.price,0);
+}
 
-function clearCart() {
+function renderCart(){
 
-  cart = [];
+const element=document.getElementById("cartItems");
 
-  renderCart();
+if(cart.length===0){
+element.innerHTML="Seu carrinho está vazio.";
+}else{
 
-  document.getElementById("paymentStatus").textContent =
-    "Aguardando teste.";
+element.innerHTML=cart.map((product,index)=>`
+<div class="cart-item">
+${product.name} — ${money(product.price)}
+<button onclick="removeProduct(${index})">X</button>
+</div>
+`).join("");
 
 }
 
-// TOTAL
-
-function getTotal() {
-
-  return cart.reduce(
-    (sum,product) => sum + product.price,
-    0
-  );
+document.getElementById("total").textContent=money(getTotal());
+document.getElementById("pixTotal").textContent=money(getTotal());
 
 }
 
-// ATUALIZAR CARRINHO
+function checkout(){
 
-function renderCart() {
+if(cart.length===0){
+alert("Adicione um produto primeiro!");
+return;
+}
 
-  const element = document.getElementById("cartItems");
+document.getElementById("pagamento").scrollIntoView({
+behavior:"smooth"
+});
 
-  if(cart.length === 0) {
-
-    element.innerHTML = "Seu carrinho está vazio.";
-
-  } else {
-
-    element.innerHTML = cart.map((product,index) => `
-      <div class="cart-item">
-
-        ${product.name} — ${money(product.price)}
-
-        <button onclick="removeProduct(${index})">
-          X
-        </button>
-
-      </div>
-    `).join("");
-
-  }
-
-  document.getElementById("total").textContent =
-    money(getTotal());
-
-  document.getElementById("pixTotal").textContent =
-    money(getTotal());
+document.getElementById("paymentStatus").textContent=
+"Carrinho pronto. Aguardando integração de pagamento.";
 
 }
 
-// PAGAMENTO
+// INTEGRAÇÃO FUTURA COM SERVIDOR SEGURO
+// Não coloque chaves secretas ou senhas neste arquivo.
+// O servidor deverá gerar a cobrança Pix e confirmar o pagamento.
 
-function checkout() {
+async function createPixPayment(){
 
-  if(cart.length === 0) {
+if(cart.length===0){
+alert("Adicione um produto primeiro!");
+return;
+}
 
-    alert("Adicione um produto primeiro!");
-
-    return;
-
-  }
-
-  document.getElementById("pagamento").scrollIntoView({
-    behavior: "smooth"
-  });
+document.getElementById("paymentStatus").textContent=
+"Pagamento real ainda não configurado. É necessário conectar um servidor de pagamentos.";
 
 }
 
-// COPIAR CÓDIGO DE TESTE
+// COPIAR CÓDIGO PIX QUANDO FOR GERADO PELO SERVIDOR
 
-async function copyPix() {
+async function copyPix(){
 
-  const code =
-    document.getElementById("pixCode").textContent;
+const code=document.getElementById("pixCode").textContent;
 
-  try {
-
-    await navigator.clipboard.writeText(code);
-
-    alert("Código demonstrativo copiado!");
-
-  } catch(error) {
-
-    alert("Não foi possível copiar o código.");
-
-  }
-
+if(!code.trim()){
+alert("Nenhum código Pix foi gerado.");
+return;
 }
 
-// SIMULAÇÃO
-
-function simulatePayment() {
-
-  if(cart.length === 0) {
-
-    alert("Adicione um produto primeiro!");
-
-    return;
-
-  }
-
-  document.getElementById("paymentStatus").textContent =
-    "SIMULAÇÃO CONCLUÍDA — NÃO É UM PAGAMENTO REAL.";
-
-  alert("Teste concluído! Nenhum dinheiro foi transferido.");
-
+try{
+await navigator.clipboard.writeText(code);
+alert("Código Pix copiado!");
+}catch(error){
+alert("Não foi possível copiar.");
 }
 
-// INICIAR
+}
 
 renderGames();
 renderCart();
