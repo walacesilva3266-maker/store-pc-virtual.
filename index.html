@@ -61,6 +61,7 @@ button{
 }
 button:hover{background:#e32636}
 .red{background:#e32636}
+.green{background:#16876d}
 .panel{
  background:#14213a;padding:20px;border-radius:14px;
  margin-top:30px;border:1px solid #293e60
@@ -80,15 +81,14 @@ button:hover{background:#e32636}
 .pix-code{
  background:#082820;color:#9ce5ca;padding:18px;
  border-radius:8px;overflow-wrap:anywhere;margin:15px 0;
- min-height:55px
 }
 .status{color:#ffc857;font-weight:bold}
 footer{text-align:center;color:#9aabc3;padding:30px}
 small{color:#aebbd0}
-input{
- width:100%;padding:13px;border-radius:8px;
- border:1px solid #52647c;background:#0c1729;
- color:white;margin-top:8px
+.email-key{
+ background:#082820;color:#9ce5ca;padding:15px;
+ border-radius:8px;overflow-wrap:anywhere;
+ margin:15px 0;font-size:16px
 }
 @media(max-width:480px){
  .container{padding:14px}
@@ -158,24 +158,32 @@ COMPRAR PC VIRTUAL
 <p>Valor da compra:</p>
 <h2 id="pixTotal">R$ 0,00</h2>
 
-<p>O pagamento será realizado por meio de uma cobrança Pix válida.</p>
+<p>Banco: <strong>Nubank</strong></p>
+<p>Tipo de pagamento: PIX manual</p>
 
-<div id="pixArea" hidden>
-<h3>QR Code / Código Pix</h3>
+<p>Sua chave PIX:</p>
 
-<div class="pix-code" id="pixCode"></div>
-
-<button onclick="copyPix()">COPIAR CÓDIGO PIX</button>
+<div class="email-key" id="pixKey">
+walacesilva3266@gmail.com
 </div>
 
+<button class="green" onclick="copyPixKey()">
+COPIAR CHAVE PIX
+</button>
+
+<button onclick="openNubankCharge()">
+ABRIR COBRANÇA NUBANK
+</button>
+
 <p class="status" id="paymentStatus">
-Aguardando configuração segura do pagamento.
+Aguardando pagamento.
 </p>
 
 <small>
-Esta loja ainda precisa de um servidor de pagamentos
-para gerar cobranças individuais e confirmar pagamentos.
-Nenhum pagamento será aprovado automaticamente nesta página.
+1. Copie a chave PIX ou abra o link de cobrança.
+2. Confira o destinatário e o valor no aplicativo do banco.
+3. Faça o pagamento somente se os dados estiverem corretos.
+4. A loja ainda não confirma pagamentos automaticamente.
 </small>
 
 </div>
@@ -190,7 +198,10 @@ STORE PC VIRTUAL © 2026
 
 <script>
 
-// CATÁLOGO - PREÇOS ORIGINAIS PRESERVADOS
+const PIX_KEY = "walacesilva3266@gmail.com";
+
+const NUBANK_LINK =
+"https://nubank.com.br/cobrar/4exwc9/6ae960a4-bf3e-4daf-b455-ffba378556df";
 
 const games = [
 {
@@ -268,6 +279,7 @@ price:item.price
 });
 
 renderCart();
+
 alert(item.name+" adicionado ao carrinho!");
 
 }
@@ -282,10 +294,8 @@ function clearCart(){
 cart=[];
 renderCart();
 
-document.getElementById("pixArea").hidden=true;
-
 document.getElementById("paymentStatus").textContent=
-"Aguardando configuração segura do pagamento.";
+"Aguardando pagamento.";
 
 }
 
@@ -327,43 +337,45 @@ behavior:"smooth"
 });
 
 document.getElementById("paymentStatus").textContent=
-"Carrinho pronto. Aguardando integração de pagamento.";
+"Confira o valor e os dados antes de pagar.";
 
 }
 
-// INTEGRAÇÃO FUTURA COM SERVIDOR SEGURO
-// Não coloque chaves secretas ou senhas neste arquivo.
-// O servidor deverá gerar a cobrança Pix e confirmar o pagamento.
-
-async function createPixPayment(){
-
-if(cart.length===0){
-alert("Adicione um produto primeiro!");
-return;
-}
-
-document.getElementById("paymentStatus").textContent=
-"Pagamento real ainda não configurado. É necessário conectar um servidor de pagamentos.";
-
-}
-
-// COPIAR CÓDIGO PIX QUANDO FOR GERADO PELO SERVIDOR
-
-async function copyPix(){
-
-const code=document.getElementById("pixCode").textContent;
-
-if(!code.trim()){
-alert("Nenhum código Pix foi gerado.");
-return;
-}
+async function copyPixKey(){
 
 try{
-await navigator.clipboard.writeText(code);
-alert("Código Pix copiado!");
+await navigator.clipboard.writeText(PIX_KEY);
+alert("Chave PIX copiada com sucesso!");
 }catch(error){
-alert("Não foi possível copiar.");
+
+const input=document.createElement("textarea");
+input.value=PIX_KEY;
+document.body.appendChild(input);
+input.select();
+
+try{
+document.execCommand("copy");
+alert("Chave PIX copiada!");
+}catch(e){
+alert("Não foi possível copiar. Selecione a chave manualmente.");
 }
+
+input.remove();
+}
+
+}
+
+function openNubankCharge(){
+
+if(cart.length===0){
+alert("Adicione um produto ao carrinho primeiro!");
+return;
+}
+
+window.open(NUBANK_LINK,"_blank","noopener,noreferrer");
+
+document.getElementById("paymentStatus").textContent=
+"Confira o valor e o destinatário na cobrança Nubank. O pagamento ainda precisa ser verificado manualmente.";
 
 }
 
