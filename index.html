@@ -25,21 +25,20 @@ header {
 }
 
 header h1 {
-  font-size: 30px;
+  font-size: 29px;
   margin: 0;
-}
-
-header p {
-  margin-bottom: 0;
 }
 
 nav {
   background: #111d32;
-  padding: 15px;
+  padding: 16px 8px;
   display: flex;
   justify-content: center;
   gap: 22px;
   flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 nav a {
@@ -51,7 +50,7 @@ nav a {
 .container {
   max-width: 1100px;
   margin: auto;
-  padding: 20px;
+  padding: 18px;
 }
 
 h2 {
@@ -62,26 +61,27 @@ h2 {
   background: linear-gradient(135deg,#142b50,#271b38);
   border: 2px solid #0878ed;
   border-radius: 16px;
-  padding: 22px;
-  margin-bottom: 35px;
+  padding: 20px;
+  margin: 15px 0 35px;
 }
 
 .featured img {
   width: 100%;
-  max-height: 300px;
+  max-height: 280px;
   object-fit: cover;
   border-radius: 12px;
+  margin-top: 15px;
 }
 
 .featured h2 {
   color: white;
-  font-size: 27px;
+  font-size: 28px;
 }
 
 .tag {
   display: inline-block;
   background: #e32636;
-  padding: 7px 12px;
+  padding: 8px 12px;
   border-radius: 20px;
   font-size: 12px;
   font-weight: bold;
@@ -95,20 +95,20 @@ h2 {
 
 .games {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
+  grid-template-columns: repeat(auto-fit,minmax(220px,1fr));
   gap: 20px;
 }
 
 .game {
   background: #14213a;
   border: 1px solid #293e60;
-  border-radius: 12px;
+  border-radius: 13px;
   overflow: hidden;
 }
 
 .game img {
   width: 100%;
-  height: 145px;
+  height: 155px;
   object-fit: cover;
 }
 
@@ -117,13 +117,13 @@ h2 {
 }
 
 .game h3 {
-  min-height: 40px;
+  min-height: 35px;
 }
 
 button {
   width: 100%;
   border: none;
-  padding: 13px;
+  padding: 14px;
   border-radius: 8px;
   color: white;
   background: #0878ed;
@@ -157,14 +157,14 @@ button:hover {
 .cart-item button {
   width: auto;
   padding: 8px 14px;
-  margin-left: 10px;
   background: #e32636;
+  margin-left: 8px;
 }
 
 .total {
   display: flex;
   justify-content: space-between;
-  font-size: 22px;
+  font-size: 21px;
   font-weight: bold;
   margin-top: 20px;
 }
@@ -202,16 +202,12 @@ small {
 }
 
 @media(max-width:480px) {
-  header h1 {
-    font-size: 25px;
-  }
-
   .container {
     padding: 14px;
   }
 
-  .total {
-    font-size: 19px;
+  nav {
+    gap: 18px;
   }
 }
 </style>
@@ -233,13 +229,13 @@ small {
 
 <main class="container">
 
-<!-- PRODUTO PRINCIPAL -->
+<!-- PC VIRTUAL PRINCIPAL -->
 
 <section id="inicio" class="featured">
 
   <span class="tag">PRODUTO PRINCIPAL</span>
 
-  <h2>PC VIRTUAL</h2>
+  <h2>🖥️ PC VIRTUAL</h2>
 
   <img
     src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=1000"
@@ -247,9 +243,8 @@ small {
   >
 
   <p>
-    Tenha uma experiência de computador virtual
-    e aproveite seus jogos pelo celular,
-    conforme os recursos e a disponibilidade do serviço.
+    Jogue seus jogos de PC pelo celular
+    através de um serviço de computador virtual.
   </p>
 
   <p class="price">R$ 19,90</p>
@@ -259,12 +254,13 @@ small {
   </button>
 
   <small>
-    Acesso ao serviço sujeito à configuração e disponibilidade.
+    O acesso ao computador virtual depende da contratação
+    e disponibilidade de um serviço compatível.
   </small>
 
 </section>
 
-<!-- CATÁLOGO -->
+<!-- JOGOS -->
 
 <h2 id="catalogo">🎮 CATÁLOGO DE JOGOS</h2>
 
@@ -295,7 +291,7 @@ small {
 
 </section>
 
-<!-- PIX DEMONSTRATIVO -->
+<!-- PAGAMENTO -->
 
 <section class="panel" id="pagamento">
 
@@ -306,12 +302,13 @@ small {
     <h3>🧪 MODO DE TESTE</h3>
 
     <p>
-      Esta tela é uma demonstração.
+      Esta tela é apenas uma demonstração.
       O código abaixo não é uma chave Pix válida
       e não deve ser usado para transferências.
     </p>
 
-    <h3>Valor do teste:
+    <h3>
+      Valor do teste:
       <span id="pixTotal">R$ 0,00</span>
     </h3>
 
@@ -332,8 +329,8 @@ small {
     </p>
 
     <small>
-      Nenhum pagamento real é realizado ou confirmado
-      por esta demonstração.
+      Nenhuma transferência real é realizada.
+      A simulação não confirma um pagamento verdadeiro.
     </small>
 
   </div>
@@ -349,7 +346,7 @@ small {
 
 <script>
 
-// CATÁLOGO DE JOGOS
+// CATÁLOGO COM PREÇOS CORRETOS
 
 const games = [
   {
@@ -395,7 +392,7 @@ function money(value) {
   });
 }
 
-// MOSTRAR JOGOS
+// EXIBIR JOGOS
 
 function renderGames() {
 
@@ -411,7 +408,7 @@ function renderGames() {
 
           <p class="price">${money(game.price)}</p>
 
-          <button onclick="addProduct('${game.name}',${game.price})">
+          <button onclick="addProduct(${index},'game')">
             ADICIONAR AO CARRINHO
           </button>
 
@@ -421,18 +418,29 @@ function renderGames() {
 
 }
 
-// ADICIONAR PRODUTO
+// ADICIONAR PRODUTOS
 
-function addProduct(name,price) {
+function addProduct(product, type) {
+
+  let item;
+
+  if(type === "game") {
+    item = games[product];
+  } else {
+    item = {
+      name: product,
+      price: 19.90
+    };
+  }
 
   cart.push({
-    name: name,
-    price: price
+    name: item.name,
+    price: item.price
   });
 
   renderCart();
 
-  alert(name + " adicionado ao carrinho!");
+  alert(item.name + " adicionado ao carrinho!");
 
 }
 
@@ -459,7 +467,7 @@ function clearCart() {
 
 }
 
-// CALCULAR TOTAL
+// TOTAL
 
 function getTotal() {
 
@@ -470,7 +478,7 @@ function getTotal() {
 
 }
 
-// MOSTRAR CARRINHO
+// ATUALIZAR CARRINHO
 
 function renderCart() {
 
@@ -504,13 +512,13 @@ function renderCart() {
 
 }
 
-// IR PARA PAGAMENTO
+// PAGAMENTO
 
 function checkout() {
 
   if(cart.length === 0) {
 
-    alert("Adicione um produto ao carrinho primeiro!");
+    alert("Adicione um produto primeiro!");
 
     return;
 
@@ -522,7 +530,7 @@ function checkout() {
 
 }
 
-// COPIAR CÓDIGO DEMONSTRATIVO
+// COPIAR CÓDIGO DE TESTE
 
 async function copyPix() {
 
@@ -543,7 +551,7 @@ async function copyPix() {
 
 }
 
-// SIMULAR PAGAMENTO
+// SIMULAÇÃO
 
 function simulatePayment() {
 
@@ -558,16 +566,13 @@ function simulatePayment() {
   document.getElementById("paymentStatus").textContent =
     "SIMULAÇÃO CONCLUÍDA — NÃO É UM PAGAMENTO REAL.";
 
-  alert(
-    "Teste concluído! Nenhum dinheiro foi transferido."
-  );
+  alert("Teste concluído! Nenhum dinheiro foi transferido.");
 
 }
 
-// INICIAR LOJA
+// INICIAR
 
 renderGames();
-
 renderCart();
 
 </script>
