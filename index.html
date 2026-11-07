@@ -4,13 +4,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>STORE PC VIRTUAL</title>
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -20,30 +17,23 @@ body {
 }
 
 header {
-  padding: 40px 15px;
+  padding: 35px 15px;
   text-align: center;
-  background: linear-gradient(135deg, #1111aa, #7900ff, #e00045);
+  background: linear-gradient(135deg,#1111aa,#7900ff,#e00045);
 }
 
 header h1 {
-  font-size: 32px;
+  font-size: 30px;
   text-shadow: 0 0 15px #00ccff;
 }
 
-header p {
-  font-size: 18px;
-}
-
 main {
-  padding: 25px 15px;
-  max-width: 900px;
+  max-width: 850px;
   margin: auto;
+  padding: 20px;
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 30px;
-}
+h2 { text-align: center; }
 
 .produto {
   background: #17172d;
@@ -53,7 +43,6 @@ h2 {
   margin: 25px auto;
   max-width: 500px;
   box-shadow: 0 0 18px #2828aa;
-  overflow: hidden;
 }
 
 .produto img {
@@ -78,7 +67,39 @@ h2 {
 .descricao {
   text-align: center;
   color: #ccc;
-  font-size: 17px;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(90deg,#073bff,#d00070);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:active { opacity: .8; }
+
+.carrinho {
+  background: #17172d;
+  border: 1px solid #00dfff;
+  border-radius: 15px;
+  padding: 20px;
+  margin-top: 35px;
+}
+
+#itens {
+  color: #ddd;
+  line-height: 2;
+}
+
+.total {
+  color: #00eaff;
+  font-size: 25px;
+  font-weight: bold;
 }
 
 footer {
@@ -86,46 +107,94 @@ footer {
   color: #aaa;
   text-align: center;
 }
-
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>STORE PC VIRTUAL</h1>
-<p>Sua loja virtual de games</p>
+  <h1>STORE PC VIRTUAL</h1>
+  <p>Sua loja virtual de games 🎮</p>
 </header>
 
 <main>
 
-<h2>🔥 Nossos produtos</h2>
+<h2>🔥 NOSSOS PRODUTOS</h2>
 
 <div class="produto">
-<img
-src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg"
-alt="GTA V"
->
-<h3>GTA V</h3>
-<p class="preco">R$ 8,90</p>
-<p class="descricao">Produto digital</p>
+  <img
+    src="https://shared.akamai.steamstatic.com/store_item_assets/steam/apps/271590/header.jpg"
+    alt="GTA V">
+  <h3>GTA V</h3>
+  <p class="preco">R$ 8,90</p>
+  <p class="descricao">Produto digital</p>
+  <button onclick="adicionar('GTA V', 8.90)">
+    🛒 COMPRAR AGORA
+  </button>
 </div>
 
 <div class="produto">
-<img
-src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=900"
-alt="Computador gamer"
->
-<h3>PC VIRTUAL</h3>
-<p class="preco">R$ 10,90</p>
-<p class="descricao">Produto digital</p>
+  <img
+    src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?w=900"
+    alt="PC Virtual">
+  <h3>PC VIRTUAL</h3>
+  <p class="preco">R$ 10,90</p>
+  <p class="descricao">Produto digital</p>
+  <button onclick="adicionar('PC VIRTUAL', 10.90)">
+    🛒 COMPRAR AGORA
+  </button>
+</div>
+
+<div class="carrinho">
+  <h2>🛒 MEU CARRINHO</h2>
+  <div id="itens">Nenhum produto selecionado.</div>
+  <p class="total">
+    Total: R$ <span id="total">0,00</span>
+  </p>
+  <button onclick="limpar()">
+    LIMPAR CARRINHO
+  </button>
 </div>
 
 </main>
 
 <footer>
-© 2026 STORE PC VIRTUAL
+  © 2026 STORE PC VIRTUAL
+  <p>Obrigado pela visita!</p>
 </footer>
+
+<script>
+let carrinho = [];
+
+function adicionar(nome, preco) {
+  carrinho.push({nome, preco});
+  atualizar();
+}
+
+function atualizar() {
+  const itens = document.getElementById("itens");
+  const total = document.getElementById("total");
+
+  if (carrinho.length === 0) {
+    itens.innerHTML = "Nenhum produto selecionado.";
+  } else {
+    itens.innerHTML = carrinho.map(
+      item => `${item.nome} - R$ ${item.preco.toFixed(2).replace(".", ",")}`
+    ).join("<br>");
+  }
+
+  const soma = carrinho.reduce(
+    (valor, item) => valor + item.preco, 0
+  );
+
+  total.textContent = soma.toFixed(2).replace(".", ",");
+}
+
+function limpar() {
+  carrinho = [];
+  atualizar();
+}
+</script>
 
 </body>
 </html>
